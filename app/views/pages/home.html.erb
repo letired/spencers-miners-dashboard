@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="jumbotron">
+  <h1>Mining Dashboard</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @miners.each do |miner| %>
+      <div class="col-xs-12">
+        <h4><%= miner.name %></h4>
+        <ul>
+          <li><%= miner.api %></li>
+          <li><%= miner.address %></li>
+        </ul>
+      </div>
+    <% end %>
+    <%= @results %>
+  </div>
+</div>

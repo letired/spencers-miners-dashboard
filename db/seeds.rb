@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Miner.create(name: "Lil Buddy", api: 1, address: "0x775d04fe289348ffa54a11eb9b9af50e2ec81a1d")
