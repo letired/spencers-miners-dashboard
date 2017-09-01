@@ -13,6 +13,14 @@
         </ul>
       </div>
     <% end %>
-    <%= @results %>
+    <% @results.each do |result| %>
+      <% if result[:nanopool]  %>
+        <p>Nanopool</p>
+        <%= result[:nanopool] %>
+        <% elsif result[:nicehash] %>
+        <p>Nicehash</p>
+        <%= result[:nicehash] %>
+      <% end %>
+    <% end %>
   </div>
 </div>

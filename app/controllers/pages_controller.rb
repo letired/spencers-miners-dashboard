@@ -3,12 +3,12 @@ class PagesController < ApplicationController
     @miners = Miner.all
     @results = []
     @miners.each do |miner|
-      @results = call_api(miner)
+      @results << call_api(miner)
     end
   end
 
   private
-
+  require 'open-uri'
   def call_api(miner)
     case miner.api
     when "nanopool"
@@ -20,10 +20,15 @@ class PagesController < ApplicationController
 
   def nanopool_api(address)
     results = open("https://api.nanopool.org/v1/eth/balance/"+address).read
-    JSON.parse(results)
+    nanopool = Hash.new()
+    nanopool[:nanopool] = JSON.parse(results)
+    nanopool
   end
 
   def nicehash_api(address)
-    "nicehash"
+    results = open("https://api.nicehash.com/api?method=stats.provider.ex&addr="+address).read
+    nicehash = Hash.new()
+    nicehash[:nicehash] = JSON.parse(results)
+    nicehash
   end
 end
